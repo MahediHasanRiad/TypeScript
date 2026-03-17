@@ -1,3 +1,12 @@
+/**
+ * Type parameter
+ * Type return value
+ * Optional Parameter
+ * Default value
+ * Rest Parameter
+ */
+
+
 // ************************************************************ //
 
 function makeChai(type: string, cups: number) {
