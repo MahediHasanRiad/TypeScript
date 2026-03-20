@@ -1,3 +1,8 @@
+/**
+ *  : → lose precision
+ *  satisfies → keep precision
+ */
+
 type user = {
   name: string
 }
@@ -7,6 +12,18 @@ const User = {
 
 } satisfies user  // check type user value includes or not, if yes, then ok
 
+// another way
+
+type user2 = {
+  name: string
+}
+
+const User2: user2 = {
+  name: 'riad',
+}
+
+
+/******************************************************************************************** */
 /**
  * if you assign a new variable then you can add extra field
  */
