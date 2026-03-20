@@ -131,6 +131,7 @@ const getChai = (item: Pick<basicChai, "name" | "isHot">) => {
 
 /**
  * Omit <typeName, 'item'> => Pick এর oposite, নির্দিষ্ট কোন item / items বাদ দিতে ব্যাবহার হয়
+ * item ঠিকই থাকবে, but value pass করতে হবেনা
  */
 
 type basicMasalaChai = {
@@ -143,3 +144,60 @@ type basicMasalaChai = {
 type getMasalaChai = Omit<basicMasalaChai, "available">;
 
 // ------------------------------------------------------------------------ //
+
+/**
+ * Record<key, value> => new object create করতে পারবে, but key তে যে যে item আছে, তার বাইরে না,
+ * এবং value ও same হতে হবে
+ */
+
+type info = 'name' | 'number' | 'address'
+
+const userInfo: Record<info, string[]> = {
+  name: ['riad'],
+  number: ['018565'],
+  address: ['dhaka']
+}
+
+// another
+
+const myInfo: Record<string | number, string | number | boolean | string[]> = {
+
+}
+
+// ------------------------------------------------------------------------ //
+
+/**
+ * NonNullable<type> => only store string, can not store Null / undefine
+ */
+type infor = string | null | undefined
+
+type validInput = NonNullable<infor>
+
+
+// -------------------------------------------------------------------------- //
+
+/**
+ * ReturnType<typeof functionName> => function type is, what they give 
+ * when we don't know what kind of function data will we received
+ */
+
+function information(input: string) {
+  return {id: 1, data: 'this', input}
+}
+
+type fetchData = ReturnType<typeof information>
+
+// ---------------------------------------------------------------------------- //
+
+/**
+ * if function return a Promise, but we need resolved value
+ * Awaited<>
+ */
+
+function infoPromise(): Promise<string> {
+  return new Promise((resolved) => {
+    setTimeout(() => resolved('data fetch'), 1000)
+  })
+}
+
+type fetchDataReturn = Awaited<ReturnType<typeof infoPromise>>
